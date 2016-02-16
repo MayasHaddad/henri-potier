@@ -1,0 +1,9 @@
+<ul>
+    <% _.each( books, function( book ){ %>
+        <li>
+            <%= book.title %><br/>
+            <%= book.price %><br/>
+            <img src="<%= book.cover %>" />
+        </li>
+    <% }); %>
+</ul>
