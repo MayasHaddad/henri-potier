@@ -4,8 +4,11 @@ var Books = Backbone.Collection.extend({
 
     model: Book,
     
-    url: 'http://henri-potier.xebia.fr/books'
-
+    url: 'http://henri-potier.xebia.fr/books',
+    
+    initialize: function() {
+        this.deferred = this.fetch()
+    }
 })
 
 module.exports = Books
