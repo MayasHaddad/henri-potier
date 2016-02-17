@@ -4,43 +4,42 @@ var PickBooks = Backbone.View.extend({
 
     el: $('#content'),
 
-    initialize: function(){
-        _.bindAll(this, 'render', 'fetchSuccess', 'fetchError')
+    initialize: function () {
+        _.bindAll(this, 'render')
 
         this.collection = new Books()
-        this.collection.fetch({
-            success: this.fetchSuccess,
-            error: this.fetchError
+
+        var self = this
+
+        this.collection.deferred.done(function (collection, response) {
+            self.books = []
+
+            if (response === 'success') {
+                self.books = self.collection.toJSON()
+            }
+
+            self.render()
         })
-        this.render()
-    },
-    
-    fetchSuccess: function (collection, response) {
-        this.books = response
+
         this.render()
     },
 
-    fetchError: function () {
-        this.books = []
-        this.render()
-    },
-    
-    render: function() {
+    render: function () {
         var template = require('../templates/loader.html'),
             templateVariables = {}
-        
-        if(this.books) {      
-            if(this.books.length > 0) {
-                template = require('../templates/books.html')
-                templateVariables = { books: this.books }
+
+        if (this.books) {
+            if (this.books.length > 0) {
+                var booksTemplate = _.template(require('../templates/books.html'))({ books: this.books })
+                template = require('../templates/PickBooks.html')
+                templateVariables = { booksTemplate: booksTemplate }
             } else {
                 template = require('../templates/booksNotFound.html')
             }
         }
-        
+
         this.$el.html(_.template(template)(templateVariables))
     }
-
 })
 
 module.exports = PickBooks
