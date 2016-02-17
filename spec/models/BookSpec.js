@@ -1,4 +1,4 @@
-describe("Player", function () {
+describe('Book', function () {
     var Book = require('../../src/models/Book.js'),
         book
 
