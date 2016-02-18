@@ -13,6 +13,10 @@ var Cart = Backbone.Model.extend({
             isbnList.push(isbn)
             this.set({ isbnList: isbnList })
         }
+    },
+
+    toString: function () {
+        return _.reduce(this.get('isbnList'), function (memo, isbn) { return memo + ',' + isbn }, '').substr(1)
     }
 })
 
