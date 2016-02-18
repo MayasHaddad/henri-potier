@@ -1,17 +1,20 @@
 var Cart = Backbone.Model.extend({
     defaults: {
-        isbnList: []
+        isbnList: [],
+        totalPrice: 0
     },
 
     initialize: function () {
         _.bindAll(this, 'addBookToCart')
     },
 
-    addBookToCart: function (isbn) {
-        var isbnList = this.get('isbnList')
+    addBookToCart: function (isbn, bookPrice) {
+        var isbnList = _.clone(this.get('isbnList'))
         if (isbnList.indexOf(isbn) < 0) {
             isbnList.push(isbn)
-            this.set({ isbnList: isbnList })
+            var currentTotalPrice = this.get('totalPrice')
+            
+            this.set({ isbnList: isbnList, totalPrice: currentTotalPrice + bookPrice })
         }
     },
 
