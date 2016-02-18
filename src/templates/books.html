@@ -1,10 +1,11 @@
 <ul>
-    <% _.each( books, function( book ){ %>
+    <% _.each( books, function( book, i ){ %>
         <li>
             <%= book.title %><br/>
-            <%= book.price %><br/>
+            <div id="price-<%= i %>"><%= book.price %></div>
+            <div id="isbn-<%= i %>"><%= book.isbn %></div>
             <img src="<%= book.cover %>" />
-            <button>Ajouter au panier</button>
+            <button class="add-book-to-cart-btn" data-id="<%= i %>" >Ajouter au panier</button>
         </li>
     <% }); %>
 </ul>
