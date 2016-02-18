@@ -9,8 +9,10 @@ var Cart = Backbone.Model.extend({
 
     addBookToCart: function (isbn) {
         var isbnList = this.get('isbnList')
-        isbnList.push(isbn)
-        this.set({ isbnList: isbnList })
+        if (isbnList.indexOf(isbn) < 0) {
+            isbnList.push(isbn)
+            this.set({ isbnList: isbnList })
+        }
     }
 })
 
