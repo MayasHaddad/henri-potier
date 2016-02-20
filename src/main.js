@@ -3,18 +3,21 @@ var AppRouter = Backbone.Router.extend({
         'proceed': 'proceed',
         '*path': 'pickBooks'
     }
-})
-
-var appRouter = new AppRouter()
+}),
+    Cart = require('./models/Cart'),
+    appRouter = new AppRouter(),
+    cart = new Cart()
 
 appRouter.on('route:proceed', function () {
-    $('#content').text('Home Screen')
+    var Proceed = require('./views/Proceed'),
+        Offers = require('./models/Offers')
+    new Proceed(cart, new Offers())
 })
 
 appRouter.on('route:pickBooks', function () {
     var PickBooks = require('./views/PickBooks')
 
-    new PickBooks()
+    new PickBooks(cart)
 })
 
 Backbone.history.start()
