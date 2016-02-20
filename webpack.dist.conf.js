@@ -12,7 +12,8 @@ module.exports = {
     entry: './src/main.js',
 
     output: {
-        filename: 'dist/index.js'
+        path: './dist',
+        filename: 'index.js'
     },
 
     eslint: {
@@ -26,18 +27,18 @@ module.exports = {
             loader: 'eslint-loader'
         }],
         loaders: [
-            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
-            { test: /\.html$/, loader: "raw-loader" }
+            { test: /\.html$/, loader: 'raw-loader' }
         ]
     },
 
     plugins: [
         new webpack.ProvidePlugin({
-            $: "jquery",
-            Backbone: "backbone",
-            _: "underscore"
+            $: 'jquery',
+            Backbone: 'backbone',
+            _: 'underscore'
         }),
-        new webpack.optimize.UglifyJsPlugin({ "minify": true })
+        new webpack.optimize.UglifyJsPlugin({ 'minify': true })
     ]
 }
