@@ -1,17 +1,27 @@
 <ul>
-    <% _.each( books, function( book, i ){ %>
-        <li>
-            <%= book.title %>
-                <br/>
-                <div id="price-<%= i %>">
-                    <%= book.price %>
+    <div class="row">
+
+        <% _.each( books, function( book, i ){ %>
+            <div class="col s3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="<%= book.cover %>">
+                        <h1 class="card-title"><%= book.title %></h1>
+                    </div>
+                    <div class="card-content">
+                        <span id="price-<%= i %>">
+                            <%= book.price %>
+                        </span> €
+                        <div class="isbn-text" >
+                            ISBN : <span id="isbn-<%= i %>"><%= book.isbn %><span>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="/#" class="add-book-to-cart-btn green-text text-accent-4" data-id="<%= i %>" id="add-book-<%= i %>">Ajouter au panier</a>
+                        <a href="/#" class="remove-book-from-cart-btn red-text text-accent-4" data-id="<%= i %>" id="remove-book-<%= i %>">Enlever du panier</a>
+                    </div>
                 </div>
-                <div id="isbn-<%= i %>">
-                    <%= book.isbn %>
-                </div>
-                <img src="<%= book.cover %>" />
-                <button class="add-book-to-cart-btn" data-id="<%= i %>" id="add-book-<%= i %>">Ajouter au panier</button>
-                <button class="remove-book-from-cart-btn" data-id="<%= i %>" id="remove-book-<%= i %>">Enlever du panier</button>
-        </li>
-        <% }) %>
+            </div>
+            <% }) %>
+    </div>
 </ul>
