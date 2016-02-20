@@ -30,6 +30,7 @@ var PickBooks = Backbone.View.extend({
 
     events: {
         'click .add-book-to-cart-btn': 'addBookToCart',
+        'click .remove-book-from-cart-btn': 'removeBookFromCart',
         'click #go-to-proceed-btn': 'goToProceed'
     },
 
@@ -39,11 +40,20 @@ var PickBooks = Backbone.View.extend({
 
     addBookToCart: function (event) {
         var id = $(event.currentTarget).data('id'),
-            book = this.collection.where({ isbn: $('#isbn-' + id).text() })[0]
+            book = this.collection.where({ isbn: $('#isbn-' + id).text().trim() })[0]
 
         this.cart.addBookToCart(book)
         $(event.currentTarget).hide()
         $('#' + 'remove-book-' + id).show()
+    },
+
+    removeBookFromCart: function (event) {
+        var id = $(event.currentTarget).data('id'),
+            book = this.collection.where({ isbn: $('#isbn-' + id).text().trim() })[0]
+
+        this.cart.removeBookFromCart(book)
+        $(event.currentTarget).hide()
+        $('#' + 'add-book-' + id).show()
     },
 
     render: function () {
