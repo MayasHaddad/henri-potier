@@ -1,3 +1,5 @@
+require('./styles/style.css')
+
 var AppRouter = Backbone.Router.extend({
     routes: {
         'proceed': 'proceed',
