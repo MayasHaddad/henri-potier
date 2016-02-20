@@ -47,6 +47,7 @@ var PickBooks = Backbone.View.extend({
         this.cart.addBookToCart(book)
         $(event.currentTarget).hide()
         $('#' + 'remove-book-' + id).show()
+        event.preventDefault()
     },
 
     removeBookFromCart: function (event) {
@@ -56,6 +57,7 @@ var PickBooks = Backbone.View.extend({
         this.cart.removeBookFromCart(book)
         $(event.currentTarget).hide()
         $('#' + 'add-book-' + id).show()
+        event.preventDefault()
     },
 
     render: function () {
