@@ -1,5 +1,12 @@
-<table>
-    <% _.each( cart.get('books'), function( book, i ){ %>
+<table class="striped">
+    <thead>
+        <td>
+            Item
+        </td>
+        <td>
+            Montant</td>
+    </thead>
+    <tbody <% _.each( cart.get( 'books'), function( book, i ){ %>
         <tr>
             <td>
                 <%= book.title %>
@@ -9,14 +16,17 @@
         </tr>
         <% }) %>
             <tr>
-                <td>Prix avant remise</td>
+                <td>Total avant remise</td>
                 <td>
                     <%= cart.get('totalPrice') %> €</td>
             </tr>
-            <tr>
+            <tr class="green lighten-4">
                 <td>Meilleur remise applicable</td>
                 <td>
-                   - <%= lowestOffer.offerValue %> <%= lowestOffer.offerUnit %></td>
+                    -
+                    <%= lowestOffer.offerValue %>
+                        <%= lowestOffer.offerUnit %>
+                </td>
             </tr>
             <tr>
                 <td>Total à payer</td>
@@ -24,4 +34,5 @@
                     <%= lowestOffer.priceAfterOffer %> € (soit
                         <%= Math.round((cart.get('totalPrice') - lowestOffer.priceAfterOffer) * 100) / 100 %> € d'économies !)</td>
             </tr>
+    </tbody>
 </table>
