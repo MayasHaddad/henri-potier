@@ -4,16 +4,15 @@ var PickBooks = Backbone.View.extend({
 
     el: $('#content'),
 
-    initialize: function () {
+    initialize: function (cart) {
         _.bindAll(this, 'render')
 
         this.collection = new Books()
+        this.cart = cart
 
         var self = this
 
         this.collection.deferred.done(function (collection, response) {
-            self.books = []
-
             if (response === 'success') {
                 self.books = self.collection.toJSON()
             }
@@ -21,7 +20,28 @@ var PickBooks = Backbone.View.extend({
             self.render()
         })
 
+        this.collection.deferred.fail(function () {
+            self.books = []
+            self.render()
+        })
+
         this.render()
+    },
+
+    events: {
+        'click .add-book-to-cart-btn': 'addBookToCart',
+        'click #go-to-proceed-btn': 'goToProceed'
+    },
+    
+    goToProceed: function () {
+        window.location.href = '/#proceed'    
+    },
+    
+    addBookToCart: function (event) {
+        var id = $(event.currentTarget).data('id'),
+            book = this.collection.where({ isbn: $('#isbn-' + id).text() })[0]
+
+        this.cart.addBookToCart(book)
     },
 
     render: function () {
