@@ -32,16 +32,18 @@ var PickBooks = Backbone.View.extend({
         'click .add-book-to-cart-btn': 'addBookToCart',
         'click #go-to-proceed-btn': 'goToProceed'
     },
-    
+
     goToProceed: function () {
-        window.location.href = '/#proceed'    
+        window.location.href = '/#proceed'
     },
-    
+
     addBookToCart: function (event) {
         var id = $(event.currentTarget).data('id'),
             book = this.collection.where({ isbn: $('#isbn-' + id).text() })[0]
 
         this.cart.addBookToCart(book)
+        $(event.currentTarget).hide()
+        $('#' + 'remove-book-' + id).show()
     },
 
     render: function () {
