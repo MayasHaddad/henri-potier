@@ -6,6 +6,7 @@
             <div id="isbn-<%= i %>"><%= book.isbn %></div>
             <img src="<%= book.cover %>" />
             <button class="add-book-to-cart-btn" data-id="<%= i %>" >Ajouter au panier</button>
+            <button class="remove-book-from-cart-btn" data-id="<%= i %>" id="remove-book-<%= i %>">Enlever du panier</button>
         </li>
     <% }) %>
 </ul>
