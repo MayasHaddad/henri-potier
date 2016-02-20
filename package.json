@@ -16,6 +16,7 @@
     "eslint": "^1.10.3",
     "eslint-loader": "^1.2.1",
     "jasmine": "^2.4.1",
+    "jsdom": "^8.0.4",
     "raw-loader": "^0.5.1",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
