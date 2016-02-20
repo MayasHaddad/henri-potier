@@ -91,5 +91,45 @@ describe('Cart', function () {
                 expect(cart.get('totalPrice')).toEqual(134.9)
             })
         })
+
+        describe('after adding and removing the same book', function () {
+
+            it('to total price to be', function () {
+                var book1 = new Book({ isbn: 'c8fabf68-8374-48fe-a7ea-a00ccd07afff', price: 40 })
+                cart.addBookToCart(book1)
+                cart.removeBookFromCart(book1)
+
+                expect(cart.get('totalPrice')).toEqual(0)
+            })
+        })
+
+        describe('after adding and removing some books', function () {
+
+            it('to total price to be', function () {
+                var book1 = new Book({ isbn: 'c8fabf68-8374-48fe-a7ea-a00ccd07afff', price: 40 })
+                cart.addBookToCart(book1)
+                var book2 = new Book({ isbn: 'a460afed-e5e7-4e39-a39d-c885c05db861', price: 50 })
+                cart.addBookToCart(book2)
+                var book3 = new Book({ isbn: 'fcd1e6fa-a63f-4f75-9da4-b560020b6acc', price: 70.9 })
+                cart.addBookToCart(book3)
+                cart.removeBookFromCart(book1)
+
+                expect(cart.get('totalPrice')).toEqual(120.9)
+            })
+        })
+        
+        describe('after adding and removing a book that has not been added', function () {
+
+            it('to total price to be', function () {
+                var book1 = new Book({ isbn: 'c8fabf68-8374-48fe-a7ea-a00ccd07afff', price: 40 })
+                cart.addBookToCart(book1)
+                var book2 = new Book({ isbn: 'a460afed-e5e7-4e39-a39d-c885c05db861', price: 50 })
+                cart.addBookToCart(book2)
+                var book3 = new Book({ isbn: 'fcd1e6fa-a63f-4f75-9da4-b560020b6acc', price: 70.9 })
+                cart.removeBookFromCart(book3)
+
+                expect(cart.get('totalPrice')).toEqual(90)
+            })
+        })
     })
 })
