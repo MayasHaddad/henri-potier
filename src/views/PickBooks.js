@@ -34,10 +34,11 @@ var PickBooks = Backbone.View.extend({
         'click #go-to-proceed-btn': 'goToProceed'
     },
 
-    goToProceed: function () {
+    goToProceed: function (event) {
         if (this.cart.get('books').length > 0) {
-            window.location.href = '/#proceed'
+            window.location.hash = 'proceed'
         }
+        event.preventDefault()
     },
 
     addBookToCart: function (event) {
