@@ -12,8 +12,7 @@ module.exports = {
     entry: './src/main.js',
 
     output: {
-        path: './dist',
-        filename: 'index.js'
+        filename: './dist/index.js'
     },
 
     eslint: {
