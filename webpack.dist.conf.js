@@ -27,7 +27,7 @@ module.exports = {
         }],
         loaders: [
             { test: /\.css$/, loader: "style-loader!css-loader" },
-            { test: /\.png$/, loader: "url-loader?mimetype=image/png" },
+            { test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
             { test: /\.html$/, loader: "raw-loader" }
         ]
     },
