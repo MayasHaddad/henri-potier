@@ -16,6 +16,7 @@ describe('Proceed', function () {
     Proceed.prototype.loadTemplates = function () {
         this.loaderTemplate = fs.readFileSync('./src/templates/loader.html', 'utf8')
         this.offerTemplate = fs.readFileSync('./src/templates/offer.html', 'utf8')
+        this.breadcrumbTemplate = require('./src/templates/breadcrumb.html', 'utf8')
         this.proceedTemplate = fs.readFileSync('./src/templates/Proceed.html', 'utf8')
         this.offerNotFoundTemplate = fs.readFileSync('./src/templates/offerNotFound.html', 'utf8')
     }

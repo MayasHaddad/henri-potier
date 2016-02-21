@@ -9,6 +9,7 @@ describe('PickBooks', function () {
     PickBooks.prototype.loadTemplates = function () {
         this.loaderTemplate = fs.readFileSync('./src/templates/loader.html', 'utf8')
         this.booksTemplate = fs.readFileSync('./src/templates/books.html', 'utf8')
+        this.breadcrumbTemplate = require('./src/templates/breadcrumb.html', 'utf8')
         this.pickBooksTemplate = fs.readFileSync('./src/templates/PickBooks.html', 'utf8')
         this.booksNotFoundTemplate = fs.readFileSync('./src/templates/booksNotFound.html', 'utf8')
     }
