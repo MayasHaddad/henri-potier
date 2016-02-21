@@ -5,11 +5,26 @@ var PickBooks = Backbone.View.extend({
     el: $('#content'),
 
     initialize: function (cart) {
-        _.bindAll(this, 'render')
+        _.bindAll(this, 'render', 'initBooks', 'loadTemplates',
+            'goToProceed', 'addBookToCart', 'removeBookFromCart',
+            'syncUIBooksListWithPreviousCart')
 
         this.collection = new Books()
         this.cart = cart
 
+        this.loadTemplates()
+        this.initBooks()
+
+        this.render()
+    },
+
+    events: {
+        'click .add-book-to-cart-btn': 'addBookToCart',
+        'click .remove-book-from-cart-btn': 'removeBookFromCart',
+        'click #go-to-proceed-btn': 'goToProceed'
+    },
+
+    initBooks: function () {
         var self = this
 
         this.collection.deferred.done(function (collection, response) {
@@ -25,14 +40,13 @@ var PickBooks = Backbone.View.extend({
             self.books = []
             self.render()
         })
-
-        this.render()
     },
 
-    events: {
-        'click .add-book-to-cart-btn': 'addBookToCart',
-        'click .remove-book-from-cart-btn': 'removeBookFromCart',
-        'click #go-to-proceed-btn': 'goToProceed'
+    loadTemplates: function () {
+        this.loaderTemplate = require('../templates/loader.html')
+        this.booksTemplate = require('../templates/books.html')
+        this.pickBooksTemplate = require('../templates/PickBooks.html')
+        this.booksNotFoundTemplate = require('../templates/booksNotFound.html')
     },
 
     goToProceed: function (event) {
@@ -43,30 +57,30 @@ var PickBooks = Backbone.View.extend({
     },
 
     addBookToCart: function (event) {
-        var id = $(event.currentTarget).data('id'),
-            book = this.collection.where({ isbn: $('#isbn-' + id).text().trim() })[0]
+        var id = this.$(event.currentTarget).data('id'),
+            book = this.collection.where({ isbn: this.$('#isbn-' + id).text().trim() })[0]
 
         this.cart.addBookToCart(book)
-        $(event.currentTarget).hide()
-        $('#' + 'remove-book-' + id).show()
+        this.$(event.currentTarget).hide()
+        this.$('#' + 'remove-book-' + id).show()
         event.preventDefault()
     },
 
     removeBookFromCart: function (event) {
-        var id = $(event.currentTarget).data('id'),
-            book = this.collection.where({ isbn: $('#isbn-' + id).text().trim() })[0]
+        var id = this.$(event.currentTarget).data('id'),
+            book = this.collection.where({ isbn: this.$('#isbn-' + id).text().trim() })[0]
 
         this.cart.removeBookFromCart(book)
-        $(event.currentTarget).hide()
-        $('#' + 'add-book-' + id).show()
+        this.$(event.currentTarget).hide()
+        this.$('#' + 'add-book-' + id).show()
         event.preventDefault()
     },
 
     syncUIBooksListWithPreviousCart: function () {
         var self = this
         return _.map(this.books, function (book) {
-            var bookPickedInPreviousCart = _.findWhere(self.cart.get('books'), {isbn: book.isbn})
-            
+            var bookPickedInPreviousCart = _.findWhere(self.cart.get('books'), { isbn: book.isbn })
+
             if (bookPickedInPreviousCart) {
                 book.hiddenAddBtn = 'hidden-btn'
                 book.hiddenRemoveBtn = ''
@@ -79,16 +93,16 @@ var PickBooks = Backbone.View.extend({
     },
 
     render: function () {
-        var template = require('../templates/loader.html'),
+        var template = this.loaderTemplate,
             templateVariables = {}
 
         if (this.books) {
             if (this.books.length > 0) {
-                var booksTemplate = _.template(require('../templates/books.html'))({ books: this.books })
-                template = require('../templates/PickBooks.html')
+                var booksTemplate = _.template(this.booksTemplate)({ books: this.books })
+                template = this.pickBooksTemplate
                 templateVariables = { booksTemplate: booksTemplate }
             } else {
-                template = require('../templates/booksNotFound.html')
+                template = this.booksNotFoundTemplate
             }
         }
 
