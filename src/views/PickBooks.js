@@ -17,6 +17,7 @@ var PickBooks = Backbone.View.extend({
                 self.books = self.collection.toJSON()
             }
 
+            self.books = self.syncUIBooksListWithPreviousCart()
             self.render()
         })
 
@@ -59,6 +60,22 @@ var PickBooks = Backbone.View.extend({
         $(event.currentTarget).hide()
         $('#' + 'add-book-' + id).show()
         event.preventDefault()
+    },
+
+    syncUIBooksListWithPreviousCart: function () {
+        var self = this
+        return _.map(this.books, function (book) {
+            var bookPickedInPreviousCart = _.findWhere(self.cart.get('books'), {isbn: book.isbn})
+            
+            if (bookPickedInPreviousCart) {
+                book.hiddenAddBtn = 'hidden-btn'
+                book.hiddenRemoveBtn = ''
+            } else {
+                book.hiddenAddBtn = ''
+                book.hiddenRemoveBtn = 'hidden-btn'
+            }
+            return book
+        })
     },
 
     render: function () {
