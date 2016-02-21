@@ -37,7 +37,6 @@ describe('Proceed', function () {
             describe('when calling getPercentageOffer', function () {
 
                 it('should return value', function () {
-                    // 
                     expect(proceed.getPercentageOffer(100, 5)).toEqual(95)
                 })
             })
