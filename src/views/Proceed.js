@@ -31,6 +31,7 @@ var Proceed = Backbone.View.extend({
 
     loadTemplates: function () {
         this.loaderTemplate = require('../templates/loader.html')
+        this.breadcrumbTemplate = require('../templates/breadcrumb.html')
         this.offerTemplate = require('../templates/offer.html')
         this.proceedTemplate = require('../templates/Proceed.html')
         this.offerNotFoundTemplate = require('../templates/offerNotFound.html')
@@ -84,9 +85,10 @@ var Proceed = Backbone.View.extend({
             templateVariables = {}
 
         if (this.offerFound === true) {
-            var offerTemplate = _.template(this.offerTemplate)({ cart: this.cart, lowestOffer: this.lowestOffer })
+            var offerTemplate = _.template(this.offerTemplate)({ cart: this.cart, lowestOffer: this.lowestOffer }),
+                breadcrumbTemplate = _.template(this.breadcrumbTemplate)({ breadcrumbElements: ['Je choisis mes livres', 'Je confirme mon achat'] })
             template = this.proceedTemplate
-            templateVariables = { offerTemplate: offerTemplate }
+            templateVariables = { offerTemplate: offerTemplate, breadcrumbTemplate: breadcrumbTemplate }
         }
 
         if (this.offerFound === false) {

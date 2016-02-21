@@ -44,6 +44,7 @@ var PickBooks = Backbone.View.extend({
 
     loadTemplates: function () {
         this.loaderTemplate = require('../templates/loader.html')
+        this.breadcrumbTemplate = require('../templates/breadcrumb.html')
         this.booksTemplate = require('../templates/books.html')
         this.pickBooksTemplate = require('../templates/PickBooks.html')
         this.booksNotFoundTemplate = require('../templates/booksNotFound.html')
@@ -98,9 +99,10 @@ var PickBooks = Backbone.View.extend({
 
         if (this.books) {
             if (this.books.length > 0) {
-                var booksTemplate = _.template(this.booksTemplate)({ books: this.books })
+                var booksTemplate = _.template(this.booksTemplate)({ books: this.books }),
+                    breadcrumbTemplate = _.template(this.breadcrumbTemplate)({ breadcrumbElements: ['Je choisis mes livres'] })
                 template = this.pickBooksTemplate
-                templateVariables = { booksTemplate: booksTemplate }
+                templateVariables = { booksTemplate: booksTemplate, breadcrumbTemplate: breadcrumbTemplate }
             } else {
                 template = this.booksNotFoundTemplate
             }
