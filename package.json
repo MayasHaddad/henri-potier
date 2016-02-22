@@ -4,7 +4,8 @@
   "description": "E-commerce app to sell Henri Potier's books",
   "main": "src/index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "deploy": "./deploy-ghpages.sh"
   },
   "repository": {
     "type": "git",
@@ -14,7 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.23.1",
-    "eslint": "^1.10.3",
+    "eslint": "^2.2.0",
     "eslint-loader": "^1.2.1",
     "file-loader": "^0.8.5",
     "jasmine": "^2.4.1",
