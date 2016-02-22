@@ -3,8 +3,8 @@ node_js:
   - "4.1"
 before_install: npm install -g webpack jasmine
 install: npm install
-before_script: webpack --config webpack.dist.conf.js
-script: npm test && chmod +x ./deploy-ghpages.sh && npm run deploy 
+before_script: npm test
+script: webpack --config webpack.dist.conf.js && chmod +x ./deploy-ghpages.sh && npm run deploy 
 env:
     global:
     - GH_REF: github.com/MayasHaddad/henri-potier.git
