@@ -5,8 +5,8 @@ mkdir out
 cd out
 git init
 git config user.name "Travis-CI"
-git config user.email "travis@gpagesdeploy.com"
-cp ../dist ./dist
+git config user.email "travis@ghpagesdeploy.com"
+cp -R ../dist/ ./dist
 cp ../index.html ./index.html
 git add .
 git commit -m "Deployed to Github Pages"
