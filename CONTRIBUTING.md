@@ -1,5 +1,5 @@
 # Prequisites
-You must have [nodejs](https://nodejs.org/en/) and [npm](https://www.npmjs.com/package/npm) installed on your machine.
+[nodejs](https://nodejs.org/en/) and [npm](https://www.npmjs.com/package/npm) must be installed on your machine.
 
 # Setting up Dev Environment
 
@@ -8,7 +8,7 @@ console and install the project dependencies by typing:
 
 `npm install`
 
-Now you use webpack-dev-server to benefit from live reload:
+Now use webpack-dev-server to benefit from live reload:
 
 `node node_modules/webpack-dev-server\bin\webpack-dev-server.js --config webpack.conf.js`
 
