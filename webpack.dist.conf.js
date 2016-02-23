@@ -36,6 +36,7 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             $: 'jquery',
+            jQuery: 'jquery',
             Backbone: 'backbone',
             _: 'underscore',
             '$.Velocity': 'velocity-animate'
