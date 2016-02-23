@@ -37,7 +37,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             Backbone: 'backbone',
-            _: 'underscore'
+            _: 'underscore',
+            '$.Velocity': 'velocity-animate'
         }),
         new webpack.optimize.UglifyJsPlugin({ 'minify': true })
     ]
