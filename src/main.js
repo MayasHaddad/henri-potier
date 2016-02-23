@@ -1,4 +1,5 @@
 require('./styles/style.css')
+require('./styles/style-mobile.css')
 require('materialize-css/dist/css/materialize.min.css')
 require('materialize-css/dist/js/materialize.js')
 

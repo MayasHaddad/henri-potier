@@ -31,3 +31,11 @@
 #toast-container .toast {
     background-color: #b71c1c;
 }
+
+.mobile-view-books {
+    display: none;
+}
+
+.desktop-view-books {
+    display: block;
+}
