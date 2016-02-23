@@ -1,5 +1,6 @@
 require('./styles/style.css')
 require('materialize-css/dist/css/materialize.min.css')
+require('materialize-css/dist/js/materialize.js')
 
 var AppRouter = Backbone.Router.extend({
     routes: {
