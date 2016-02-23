@@ -30,6 +30,7 @@
     "backbone": "^1.2.3",
     "jquery": "^2.2.0",
     "materialize-css": "^0.97.5",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "velocity-animate": "^1.2.3"
   }
 }
