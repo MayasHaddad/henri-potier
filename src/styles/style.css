@@ -27,3 +27,7 @@
     width: 50%;
     margin: 0 auto; 
 }
+
+#toast-container .toast {
+    background-color: #b71c1c;
+}
