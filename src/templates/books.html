@@ -1,8 +1,8 @@
 <% _.each( books, function( book, i ){ %>
     <% if(i % 3 === 0) { %>
-        <div class="row desktop-view-books">
+        <div class="row">
             <% } %>
-                <div class="col s4">
+                <div class="col s12 m4 l4">
                     <div class="card">
                         <div class="card-image">
                             <img src="<%= book.cover %>">
@@ -24,33 +24,5 @@
             </div>
             
             <% if(i % 3 === 2 || i === books.length - 1) { %> </div> <% } %>
-        
-            <% }) %>
-            
-            <% _.each( books, function( book, i ){ %>
- 
-        <div class="row mobile-view-books">
-                <div class="col s12">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="<%= book.cover %>">
-                            <h1 class="card-title"><%= book.title %></h1>
-                        </div>
-                        <div class="card-content">
-                            <span id="price-<%= i %>">
-                            <%= book.price %>
-                        </span> €
-                                <div class="isbn-text">
-                                    ISBN : <span id="isbn-<%= i %>"><%= book.isbn %><span>
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        <a href="/#" class="<%= book.hiddenAddBtn %> add-book-to-cart-btn green-text text-accent-4" data-id="<%= i %>" id="add-book-<%= i %>">Ajouter au panier</a>
-                        <a href="/#" class="<%= book.hiddenRemoveBtn %> remove-book-from-cart-btn red-text text-accent-4" data-id="<%= i %>" id="remove-book-<%= i %>">Enlever du panier</a>
-                    </div>
-                </div>
-            </div>
-            
-            </div>
         
             <% }) %>

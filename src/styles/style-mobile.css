@@ -3,12 +3,4 @@
         width: 100%;
         margin: 0; 
     }
-    
-    .desktop-view-books {
-        display: none;
-    }
-
-    .mobile-view-books {
-        display: block;
-    }
 }
