@@ -4,20 +4,24 @@ var PickBooks = Backbone.View.extend({
 
     el: $('#content'),
 
-    initialize: function (cart) {
+    initialize: function () {
         _.bindAll(this, 'render', 'initBooks', 'loadTemplates',
             'goToProceed', 'addBookToCart', 'removeBookFromCart',
-            'syncUIBooksListWithPreviousCart')
+            'syncUIBooksListWithPreviousCart', 'load')
 
         this.collection = new Books()
-        this.cart = cart
 
         this.loadTemplates()
+    },
+    
+    load: function (cart) {
+        this.cart = cart
+
         this.initBooks()
 
         this.render()
     },
-
+    
     events: {
         'click .add-book-to-cart-btn': 'addBookToCart',
         'click .remove-book-from-cart-btn': 'removeBookFromCart',

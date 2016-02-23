@@ -11,18 +11,19 @@ var AppRouter = Backbone.Router.extend({
 }),
     Cart = require('./models/Cart'),
     appRouter = new AppRouter(),
-    cart = new Cart()
+    cart = new Cart(),
+    PickBooks = require('./views/PickBooks'),
+    pickBooks = new PickBooks(),
+    Proceed = require('./views/Proceed'),
+    Offers = require('./models/Offers'),
+    proceed = new Proceed()
 
 appRouter.on('route:proceed', function () {
-    var Proceed = require('./views/Proceed'),
-        Offers = require('./models/Offers')
-    new Proceed(cart, new Offers())
+    proceed.load(cart, new Offers())
 })
 
 appRouter.on('route:pickBooks', function () {
-    var PickBooks = require('./views/PickBooks')
-
-    new PickBooks(cart)
+    pickBooks.load(cart)
 })
 
 Backbone.history.start()

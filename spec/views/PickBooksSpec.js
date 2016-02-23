@@ -42,7 +42,8 @@ describe('PickBooks', function () {
                         }]
                 }
 
-                pickBooks = new PickBooks(cart)
+                pickBooks = new PickBooks()
+                pickBooks.load(cart)
             })
 
             describe('after adding a book to cart', function () {

@@ -33,7 +33,8 @@ describe('Proceed', function () {
                     return null // no server call
                 }
 
-                proceed = new Proceed(cart, offers)
+                proceed = new Proceed()
+                proceed.load(cart, offers)
             })
             describe('when calling getPercentageOffer', function () {
 
@@ -104,7 +105,8 @@ describe('Proceed', function () {
                         this.render()
                     }
 
-                    proceed = new Proceed(cart, offers)
+                    proceed = new Proceed()
+                    proceed.load(cart, offers)
                     expect(proceed.getLowestOffer().priceAfterOffer).toEqual(950)
                 })
             })
@@ -144,7 +146,8 @@ describe('Proceed', function () {
                         this.render()
                     }
 
-                    proceed = new Proceed(cart, offers)
+                    proceed = new Proceed()
+                    proceed.load(cart, offers)
                     expect(proceed.getLowestOffer().priceAfterOffer).toEqual(5)
                 })
             })
@@ -184,7 +187,8 @@ describe('Proceed', function () {
                         this.render()
                     }
 
-                    proceed = new Proceed(cart, offers)
+                    proceed = new Proceed()
+                    proceed.load(cart, offers)
                     expect(proceed.getLowestOffer().priceAfterOffer).toEqual(50)
                 })
             })

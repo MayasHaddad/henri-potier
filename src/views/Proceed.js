@@ -2,10 +2,13 @@ var Proceed = Backbone.View.extend({
 
     el: $('#content'),
 
-    initialize: function (cart, offers) {
-        _.bindAll(this, 'render', 'loadTemplates', 'getLowestOffer', 'initOffers')
+    initialize: function () {
+        _.bindAll(this, 'render', 'loadTemplates', 'getLowestOffer', 'initOffers', 'load')
 
         this.loadTemplates()
+    },
+    
+    load: function (cart, offers) {
         this.offers = offers
         this.cart = cart
 
@@ -13,7 +16,7 @@ var Proceed = Backbone.View.extend({
 
         this.render()
     },
-
+    
     initOffers: function () {
         this.offers.getOffers(this.cart.toString())
         var self = this
