@@ -53,6 +53,8 @@ var PickBooks = Backbone.View.extend({
     goToProceed: function (event) {
         if (this.cart.get('books').length > 0) {
             window.location.hash = 'proceed'
+        } else {
+            Materialize.toast('Merci de choisir au moins un livre', 2000)
         }
         event.preventDefault()
     },
