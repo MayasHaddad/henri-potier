@@ -31,3 +31,7 @@
 #toast-container .toast {
     background-color: #b71c1c;
 }
+
+#toast-container .green-toast {
+    background-color: #00c853;
+}

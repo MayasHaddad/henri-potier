@@ -17,6 +17,15 @@ var Proceed = Backbone.View.extend({
         this.render()
     },
     
+    events: {
+        'click #proceed-btn': 'proceedComplete'
+    },
+    
+    proceedComplete: function () {
+         Materialize.toast('Achat confirmé, un e-mail vous a été envoyé', 10000, 'rounded')
+         $('.toast').addClass('green-toast')
+    },
+    
     initOffers: function () {
         this.offers.getOffers(this.cart.toString())
         var self = this
